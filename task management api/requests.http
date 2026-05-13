@@ -1,0 +1,37 @@
+### Create a user
+POST http://127.0.0.1:8000/signup
+Content-Type: application/json
+
+{
+  "username": "alice",
+  "email": "alice@example.com",
+  "password": "secret123"
+}
+
+### Login and copy the access token from the response
+POST http://127.0.0.1:8000/login
+Content-Type: application/json
+
+{
+  "email": "alice@example.com",
+  "password": "secret123"
+}
+
+### Create a task with a bearer token
+POST http://127.0.0.1:8000/tasks
+Authorization: Bearer YOUR_ACCESS_TOKEN
+Content-Type: application/json
+
+{
+  "title": "Finish project",
+  "description": "Complete the task management API",
+  "priority": "high"
+}
+
+### List your tasks
+GET http://127.0.0.1:8000/tasks
+Authorization: Bearer YOUR_ACCESS_TOKEN
+
+### Search by priority
+GET http://127.0.0.1:8000/search?priority=high
+Authorization: Bearer YOUR_ACCESS_TOKEN
